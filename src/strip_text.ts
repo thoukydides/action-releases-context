@@ -39,6 +39,9 @@ function stripBodyText(body: string, config: StripOptions): { body: string, appl
         body = stripped;
     };
 
+    // Standardise line endings (matches CRLF/CR to LF)
+    applyReplace('line-endings', /\r\n?/g, '\n');
+
     // Strip HTML or Markdown images
     if (strip_images) {
         applyReplace('md-images',   /!\[[^\]]*\]\([^)]*\)/g);

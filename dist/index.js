@@ -34291,7 +34291,7 @@ async function getReleases(github, repository) {
         throw new Error(`Invalid repository specifier: ${repository}`);
     // Retrieve the list of releases
     const releases = await github.paginate(github.rest.repos.listReleases, { owner, repo });
-    coreExports.info(`Retrieved ${plural(releases.length, 'release')})`);
+    coreExports.info(`Retrieved ${plural(releases.length, 'release')}`);
     coreExports.debug(`REST API Releases:\n${JSON.stringify(releases, null, 4)}`);
     // Exclude drafts and prereleases
     const draftsCount = releases.filter(r => r.draft).length;
@@ -34342,6 +34342,8 @@ function stripBodyText(body, config) {
             applied.push(name);
         body = stripped;
     };
+    // Standardise line endings (matches CRLF/CR to LF)
+    applyReplace('line-endings', /\r\n?/g, '\n');
     // Strip HTML or Markdown images
     if (strip_images) {
         applyReplace('md-images', /!\[[^\]]*\]\([^)]*\)/g);
