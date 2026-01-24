@@ -1,0 +1,55 @@
+name: Releases Context
+author: Alexander Thoukydides
+description: Prepare release information for use as context for AI inference
+branding:
+  icon: 'tag'
+  color: 'orange'
+
+inputs:
+  repository:
+    description: The repository to check in the format 'owner/repo'
+    type: string
+    default: ${{ github.repository }}
+  min_releases:
+    description: The minimum number of releases to include
+    type: number
+    default: 1
+  max_releases:
+    description: The maximum number of releases to include; 0 for no limit
+    type: number
+    default: 5
+  max_age_days:
+    description: The maximum age in days (measured from the publication date) of release to include; 0 for no limit
+    type: number
+    default: 365
+  max_tokens:
+    description: The maximum number of tokens to use (approximated by character count)
+    type: number
+    default: 500
+  strip_images:
+    description: Remove any images (HTML or Markdown format) from the release bodies
+    type: boolean
+    default: true
+  strip_links:
+    description: Remove any links (HTML or Markdown format) from the release bodies
+    type: boolean
+    default: true
+  strip_html:
+    description: Remove all HTML tags from the release bodies
+    type: boolean
+    default: false
+  strip_regexps:
+    description: Regular expressions (one per line) applied to the release bodies for additional content that should be removed
+    default:
+  github_token:
+    description: The GitHub token used to create an authenticated client
+    type: string
+    default: ${{ github.token }}
+
+outputs:
+  releases:
+    description: JSON array of releases prepared for LLM input context, in descending tag version order
+
+runs:
+  using: node20
+  main: dist/index.js
