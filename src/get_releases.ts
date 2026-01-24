@@ -22,7 +22,7 @@ export async function getReleases(github: InstanceType<typeof GitHub>, repositor
 
     // Retrieve the list of releases
     const releases = await github.paginate(github.rest.repos.listReleases, { owner, repo });
-    core.info(`Retrieved ${plural(releases.length, 'release')})`);
+    core.info(`Retrieved ${plural(releases.length, 'release')}`);
     core.debug(`REST API Releases:\n${JSON.stringify(releases, null, 4)}`);
 
     // Exclude drafts and prereleases
