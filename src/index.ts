@@ -61,9 +61,11 @@ async function run(): Promise<void> {
 }
 
 // Run the script and handle errors
-try {
-    await run();
-} catch (err) {
-    core.setFailed(err instanceof Error ? `${err.name}: ${err.message}` : String(err));
-    if (err instanceof Error && err.stack) core.debug(err.stack);
-}
+void (async () => {
+    try {
+        await run();
+    } catch (err) {
+        core.setFailed(err instanceof Error ? `${err.name}: ${err.message}` : String(err));
+        if (err instanceof Error && err.stack) core.debug(err.stack);
+    }
+})();

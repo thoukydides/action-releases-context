@@ -20,10 +20,10 @@ const onwarn = (warning: RollupLog, defaultHandler: (warning: string | RollupLog
 const config: RollupOptions = {
     input: 'src/index.ts',
     output: {
-        esModule: true,
         file: 'dist/index.js',
-        format: 'es',
-        sourcemap: true
+        format: 'cjs',
+        sourcemap: true,
+        exports: 'auto'
     },
     plugins: [typescript(), nodeResolve({ preferBuiltins: true }), commonjs()],
     onwarn
