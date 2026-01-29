@@ -10,6 +10,14 @@ inputs:
     description: The repository to check in the format 'owner/repo'
     type: string
     default: ${{ github.repository }}
+  html_url:
+    description: The URL for a changelog in HTML format
+    type: string
+    default:
+  md_url:
+    description: The URL for a changelog in Markdown (or other structured plain text) format
+    type: string
+    default:
   min_releases:
     description: The minimum number of releases to include
     type: number
@@ -26,6 +34,14 @@ inputs:
     description: The maximum number of tokens to use (approximated by character count)
     type: number
     default: 500
+  html_regexps:
+    description: Regular expressions and optional replacement text (one per line) applied to HTML before conversion to Markdown
+    type: string
+    default:
+  md_release_regexp:
+    description: Regular expressions used to match per-release headings in Markdown changelists (or the results of converting HTML to Markdown)
+    type: string
+    default:
   strip_images:
     description: Remove any images (HTML or Markdown format) from the release bodies
     type: boolean
@@ -40,6 +56,7 @@ inputs:
     default: false
   strip_regexps:
     description: Regular expressions (one per line) applied to the release bodies for additional content that should be removed
+    type: string
     default:
   github_token:
     description: The GitHub token used to create an authenticated client

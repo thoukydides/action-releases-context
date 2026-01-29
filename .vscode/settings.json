@@ -13,7 +13,10 @@
         "buymeacoffee",
         "color",
         "dimsuv",
+        "homeconnect",
+        "parsable",
         "rcompare",
+        "semvers",
         "Thoukydides"
     ],
     "files.exclude": {

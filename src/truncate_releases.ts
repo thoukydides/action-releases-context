@@ -1,7 +1,7 @@
 // GitHub action
 // Copyright © 2026 Alexander Thoukydides
 
-import { Release } from './get_releases.js';
+import { Release } from './releases.js';
 import * as core from '@actions/core';
 import { plural } from './utils.js';
 
@@ -55,9 +55,10 @@ export function truncateReleases(releases: Release[], options: TruncateOptions):
     return releases;
 }
 
-// Age of a release in days
+// Age of a release in days (0 if undated)
 function releaseAge(release: Release): number {
-    const milliseconds = Date.now() - new Date(release.published_at).getTime();
+    if (!release.date) return 0;
+    const milliseconds = Date.now() - new Date(release.date).getTime();
     return milliseconds / (24 * 60 * 60 * 1000);
 }
 

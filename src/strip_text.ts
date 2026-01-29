@@ -1,7 +1,7 @@
 // GitHub action
 // Copyright © 2026 Alexander Thoukydides
 
-import { Release } from './get_releases.js';
+import { Release } from './releases.js';
 import * as core from '@actions/core';
 import { formatList, plural } from './utils.js';
 
