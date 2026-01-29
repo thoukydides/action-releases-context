@@ -158,7 +158,7 @@ jobs:
           # Change <header> to <h1> for release headings prior to Markdown conversion
           # Remove page footer below </article> closing tag
           html_regexps: |
-            /<(\/?)header>/i '<$1h1>'
+            /<(\/?)header[^>]*>/i '<$1h1>'
             /<\/article>.*$/s
           md_release_regexp: |
             /^#\s+(?<date>\w+ \d\d?, \d\d\d\d)\s*$/m
