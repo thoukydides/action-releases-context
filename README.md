@@ -27,9 +27,9 @@ Various inputs are defined in the action to configure its operation:
 | `html_url` | The URL for a changelog in HTML format | `''`
 | `md_url` | The URL for a changelog in Markdown (or other structured plain text) format | `''`
 | `min_releases` | The minimum number of releases to include | `1`
-| `max_releases` | The maximum number of releases to include; 0 for no limit | `5`
+| `max_releases` | The maximum number of releases to include; 0 for no limit | `10`
 | `max_age_days` | The maximum age in days (measured from the publication date) of release to include; 0 for no limit | `365`
-| `max_tokens` | The maximum number of tokens to use (approximated by character count) | `500`
+| `max_tokens` | The maximum number of tokens to use (approximated by character count) | `5000`
 | `html_regexps` | Regular expressions and optional replacement text (one per line) applied to HTML before conversion to Markdown | `''`
 | `md_release_regexp` | Regular expressions used to match per-release headings in Markdown changelists (or the results of converting HTML to Markdown) | *see below*
 | `strip_images` | Remove any images (HTML or Markdown format) from the release bodies | `true`
