@@ -25,7 +25,14 @@ const config: RollupOptions = {
         sourcemap: true,
         exports: 'auto'
     },
-    plugins: [typescript(), nodeResolve({ preferBuiltins: true }), commonjs()],
+    plugins: [
+        typescript(),
+        nodeResolve({ preferBuiltins: true, browser: false }),
+        commonjs({
+            transformMixedEsModules: true,
+            requireReturnsDefault: 'auto'
+        })
+    ],
     onwarn
 };
 
