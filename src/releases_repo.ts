@@ -1,9 +1,9 @@
 // GitHub action
 // Copyright © 2026 Alexander Thoukydides
 
-import { GitHub } from '@actions/github/lib/utils.js';
+import { GitHub } from '@actions/github/lib/utils';
 import * as core from '@actions/core';
-import { RestEndpointMethodTypes } from '@octokit/plugin-rest-endpoint-methods/dist-types/generated/parameters-and-response-types.js';
+import { RestEndpointMethodTypes } from '@octokit/plugin-rest-endpoint-methods';
 import { plural } from './utils.js';
 import { Release } from './releases.js';
 import semver from 'semver';

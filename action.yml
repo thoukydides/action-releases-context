@@ -68,5 +68,5 @@ outputs:
     description: JSON array of releases prepared for LLM input context, in descending tag version order
 
 runs:
-  using: node20
+  using: node24
   main: dist/index.js
